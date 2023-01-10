@@ -9,12 +9,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 @SpringBootTest
 public class LibraryTestSuite {
 
-    @Autowired
-    private Library library;
-
     @Test
     void testLoadFromDb() {
         //Given
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext("com.kodilla.spring");
+        Library library = context.getBean(Library.class);
+
         //When
         library.loadFromDb();
 
@@ -25,6 +26,10 @@ public class LibraryTestSuite {
     @Test
     void testSaveToDb() {
         //Given
+        ApplicationContext context =
+                new AnnotationConfigApplicationContext("com.kodilla.spring");
+        Library library = context.getBean(Library.class);
+
         //When
         library.saveToDb();
 
